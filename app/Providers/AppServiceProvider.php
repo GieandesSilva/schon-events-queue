@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Mail\UserRegistered;
+use App\Observers\UserObserver;
 use App\User;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,10 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        User::created(function ($user){
-            // Envia E-mail Notificando ao Usuário
-            Mail::to($user)->send(new UserRegistered($user));
-        });
+        User::observe(UserObserver::class);
     }
 
     /**
