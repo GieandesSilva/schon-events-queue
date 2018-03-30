@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\StockEntrie;
+use App\Product;
+use App\StockEntry;
 use Illuminate\Http\Request;
 
 class StockEntriesController extends Controller
@@ -15,6 +16,8 @@ class StockEntriesController extends Controller
     public function index()
     {
         //
+        $movements = StockEntry::all();
+        return view('stock-entries.index', compact('movements'));
     }
 
     /**
@@ -25,6 +28,8 @@ class StockEntriesController extends Controller
     public function create()
     {
         //
+        $products = Product::all()->pluck('name', 'id');
+        return view('stock-entries.create', compact('products'));
     }
 
     /**
@@ -36,15 +41,20 @@ class StockEntriesController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = array_except($request->all(), '_token');
+        StockEntry::forceCreate($data);
+
+        return redirect()->route('stocke_entries.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\StockEntrie  $stockEntrie
+     * @param  \App\StockEntry  $stockEntrie
      * @return \Illuminate\Http\Response
      */
-    public function show(StockEntrie $stockEntrie)
+    public function show(StockEntry $stockEntrie)
     {
         //
     }
@@ -52,10 +62,10 @@ class StockEntriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\StockEntrie  $stockEntrie
+     * @param  \App\StockEntry  $stockEntrie
      * @return \Illuminate\Http\Response
      */
-    public function edit(StockEntrie $stockEntrie)
+    public function edit(StockEntry $stockEntrie)
     {
         //
     }
@@ -64,10 +74,10 @@ class StockEntriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\StockEntrie  $stockEntrie
+     * @param  \App\StockEntry  $stockEntrie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StockEntrie $stockEntrie)
+    public function update(Request $request, StockEntry $stockEntrie)
     {
         //
     }
@@ -75,10 +85,10 @@ class StockEntriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\StockEntrie  $stockEntrie
+     * @param  \App\StockEntry  $stockEntrie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StockEntrie $stockEntrie)
+    public function destroy(StockEntry $stockEntrie)
     {
         //
     }

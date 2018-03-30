@@ -15,6 +15,8 @@ class StockOutputsController extends Controller
     public function index()
     {
         //
+        $movements = StockOutput::all();
+        return view('stock-outputs.index', compact('movements'));
     }
 
     /**
@@ -25,6 +27,8 @@ class StockOutputsController extends Controller
     public function create()
     {
         //
+        $products = Product::all()->pluck('name', 'id');
+        return view('stock-outputs.create', compact('products'));
     }
 
     /**
@@ -36,6 +40,10 @@ class StockOutputsController extends Controller
     public function store(Request $request)
     {
         //
+        $data = array_except($request->all(), '_token');
+        StockOutput::forceCreate($data);
+
+        return redirect()->route('stocke_outputs.index');
     }
 
     /**
