@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\StockEntrie;
 use Illuminate\Http\Request;
 
-class StockEntrieController extends Controller
+class StockEntriesController extends Controller
 {
     /**
      * Display a listing of the resource.
