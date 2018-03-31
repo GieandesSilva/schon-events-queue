@@ -35,6 +35,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{route('products.index')}}">Produtos <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('stock_entries.index')}}">Entradas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('stock_outputs.index')}}">Saídas</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
