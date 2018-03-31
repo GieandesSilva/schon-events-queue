@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+    private $paginate = 10;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
+        $products = Product::paginate($this->paginate);
         return view('products.index', compact('products'));
     }
 

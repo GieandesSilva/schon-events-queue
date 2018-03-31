@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\StockEntry;
+use App\Models\Product;
+use App\Models\StockEntry;
 use Illuminate\Http\Request;
 
 class StockEntriesController extends Controller
 {
+    private $paginate = 10;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,7 @@ class StockEntriesController extends Controller
     public function index()
     {
         //
-        $movements = StockEntry::all();
+        $movements = StockEntry::paginate($this->paginate);
         return view('stock-entries.index', compact('movements'));
     }
 
@@ -29,7 +30,8 @@ class StockEntriesController extends Controller
     {
         //
         $products = Product::all()->pluck('name', 'id');
-        return view('stock-entries.create', compact('products'));
+        $movements = StockEntry::paginate($this->paginate);
+        return view('stock-entries.create', compact(['products', 'movements']));
     }
 
     /**
@@ -41,11 +43,10 @@ class StockEntriesController extends Controller
     public function store(Request $request)
     {
         //
-
         $data = array_except($request->all(), '_token');
         StockEntry::forceCreate($data);
 
-        return redirect()->route('stocke_entries.index');
+        return redirect()->route('stock_entries.index');
     }
 
     /**
