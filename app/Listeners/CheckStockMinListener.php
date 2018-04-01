@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\ProductDowngrading;
+use App\Events\ProductUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CheckStockDifferenceListener
+class CheckStockMinListener
 {
     /**
      * Create the event listener.
@@ -24,7 +24,7 @@ class CheckStockDifferenceListener
      * @param  ProductDowngrading  $event
      * @return void
      */
-    public function handle(ProductDowngrading $event)
+    public function handle(ProductUpdated $event)
     {
         //
         $product = $event->getProduct();

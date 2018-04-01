@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Events\ProductDowngrading;
-use App\Events\ProductUpdating;
+use App\Events\ProductUpdated;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     //
     protected $dispatchesEvents = [
-        'updating' => ProductUpdating::class,
-        'updated' => ProductDowngrading::class
+        'updated' => ProductUpdated::class
     ];
 }

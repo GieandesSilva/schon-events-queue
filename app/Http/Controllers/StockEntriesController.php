@@ -17,7 +17,7 @@ class StockEntriesController extends Controller
     public function index()
     {
         //
-        $movements = StockEntry::paginate($this->paginate);
+        $movements = StockEntry::orderBy('id', 'desc')->paginate($this->paginate);
         return view('stock-entries.index', compact('movements'));
     }
 
@@ -30,7 +30,7 @@ class StockEntriesController extends Controller
     {
         //
         $products = Product::all()->pluck('name', 'id');
-        $movements = StockEntry::paginate($this->paginate);
+        $movements = StockEntry::orderBy('id', 'desc')->paginate($this->paginate);
         return view('stock-entries.create', compact(['products', 'movements']));
     }
 

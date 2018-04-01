@@ -6,7 +6,7 @@ use App\Events\StockOutputCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DecreaseStockListener
+class DecrementStockListener
 {
     /**
      * Create the event listener.

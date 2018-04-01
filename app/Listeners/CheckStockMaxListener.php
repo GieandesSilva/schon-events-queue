@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ProductUpdating;
+use App\Events\ProductUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -21,10 +21,10 @@ class CheckStockMaxListener
     /**
      * Handle the event.
      *
-     * @param  ProductUpdating  $event
+     * @param  ProductUpdated  $event
      * @return void
      */
-    public function handle(ProductUpdating $event)
+    public function handle(ProductUpdated $event)
     {
         //
         $product = $event->getProduct();
