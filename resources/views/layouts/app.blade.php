@@ -39,6 +39,9 @@
                             <a class="nav-link" href="{{route('products.index')}}">Produtos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('orders.create')}}">Checkout</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('stock_entries.index')}}">Entradas</a>
                         </li>
                         <li class="nav-item">
