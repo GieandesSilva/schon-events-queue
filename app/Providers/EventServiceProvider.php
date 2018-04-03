@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ProductUpdated' => [
             'App\Listeners\CheckStockMaxListener',
             'App\Listeners\CheckStockMinListener'
+        ],
+        'App\Events\OrderProductsSaveCompleted' => [
+            'App\Listeners\CalculateTotalOrderListener',
         ]
     ];
 

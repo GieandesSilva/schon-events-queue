@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderProductsSaveCompleted;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -54,6 +55,8 @@ class OrdersController extends Controller
                 'quantity' => $orderProduct['quantity']
             ]);
         }
+
+        event(new OrderProductsSaveCompleted($order));
 
         return view('orders.successfully', compact('order'));
     }
