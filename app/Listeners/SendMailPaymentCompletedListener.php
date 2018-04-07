@@ -29,7 +29,7 @@ class SendMailPaymentCompletedListener
     {
         //
         $order = $event->getOrder();
-        \Mail::to($order->user)->send(new PaymentCompletedMail($order, $order->user));
+        \Mail::to($order->user)->queue(new PaymentCompletedMail($order, $order->user));
 
     }
 }
